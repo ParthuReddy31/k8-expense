@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: expense
+  labels:
+    app: mysql
+    teir: database
+    project: expense
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mysql
+      teir: database
+      project: expense
+  template:
+    metadata:
+      labels:
+        app: mysql
+        teir: database
+        project: expense
+    spec:
+      containers:
+      - name: mysql
+        image: parthureddy3/mysql:v1
